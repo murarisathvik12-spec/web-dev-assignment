@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wayfarer | Holiday Packages in India</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0d0d0d;--mute:#6a6a6a;--line:#ececec;--soft:#f6f5f3;--acc:#ff5a36}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:Outfit,system-ui,sans-serif;background:#fff;color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:70px}
+.logo{font-weight:800;font-size:1.35rem;letter-spacing:-.03em}.logo b{color:var(--acc)}
+nav ul{display:flex;gap:30px;list-style:none;font-weight:500;font-size:.95rem}
+nav ul a{color:var(--mute);transition:.2s}nav ul a:hover{color:var(--ink)}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:600;padding:13px 26px;border-radius:99px;background:var(--ink);color:#fff;transition:.25s}
+.btn:hover{background:var(--acc);transform:translateY(-2px)}
+#burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit}
+.hero{padding:70px 0 40px;text-align:center}
+.hero h1{font-size:clamp(2.6rem,7.5vw,6rem);line-height:1;letter-spacing:-.05em;font-weight:800;max-width:14ch;margin:auto;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}}
+.hero p{color:var(--mute);max-width:520px;margin:22px auto 34px;font-size:1.1rem}
+.search{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:10px;max-width:840px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:10px;box-shadow:0 30px 60px -30px rgba(0,0,0,.25);text-align:left}
+.search label{padding:6px 14px;font-size:.78rem;color:var(--mute);display:grid}
+.search select{border:0;font:inherit;font-weight:600;font-size:1rem;color:var(--ink);background:none;outline:none;padding-top:2px}
+.collage{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:14px;margin-top:50px;height:340px}
+.collage div{border-radius:26px;display:flex;align-items:end;padding:18px;color:#fff;font-weight:700;font-size:1.1rem}
+.collage div:nth-child(2){margin:34px 0}
+section{padding:80px 0}
+h2{font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:12px}
+.sub{color:var(--mute);margin-bottom:30px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{border:1px solid var(--line);background:#fff;font:inherit;padding:9px 20px;border-radius:99px;cursor:pointer;transition:.2s}
+.chip.on,.chip:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.pack{border:1px solid var(--line);border-radius:26px;overflow:hidden;transition:.35s;background:#fff}
+.pack:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(0,0,0,.3)}
+.img{height:190px;display:flex;align-items:start;justify-content:space-between;padding:14px;font-size:2.4rem;color:#fff}
+.img span{background:rgba(255,255,255,.92);color:var(--ink);font-size:.78rem;font-weight:700;padding:5px 12px;border-radius:99px;height:fit-content}
+.pb{padding:20px}
+.pb h3{font-size:1.25rem;letter-spacing:-.02em}.pb small{color:var(--mute)}
+.pb ul{list-style:none;display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}.pb li{background:var(--soft);padding:4px 12px;border-radius:99px;font-size:.8rem}
+.row{display:flex;justify-content:space-between;align-items:center}
+.row b{font-size:1.5rem;letter-spacing:-.03em}.row s{color:var(--mute);font-size:.85rem;margin-left:6px}
+.row .btn{padding:10px 20px;font-size:.9rem}
+.soft{background:var(--soft)}
+.dest{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dest div{aspect-ratio:3/4;border-radius:22px;padding:18px;color:#fff;display:flex;flex-direction:column;justify-content:end;transition:.35s}
+.dest div:hover{transform:scale(1.03)}.dest b{font-size:1.2rem}.dest small{opacity:.9}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-weight:600;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";font-size:1.4rem;transition:.3s}details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mute);margin-top:10px;max-width:760px}
+.two{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;align-items:start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form label{display:grid;gap:6px;font-size:.85rem;color:var(--mute)}
+form .full{grid-column:1/-1}
+input,select,textarea{font:inherit;color:var(--ink);padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;transition:.2s}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);border-color:transparent}
+#ok{grid-column:1/-1;color:var(--acc);font-weight:600}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:.9rem}
+@media(max-width:860px){
+ #burger{display:block}
+ nav ul{position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 4%;display:none}
+ nav ul.open{display:flex}nav ul a{display:block;padding:12px 0}
+ nav>.btn{display:none}
+ .search{grid-template-columns:1fr 1fr}.search .btn{grid-column:1/-1}
+ .collage{height:220px;grid-template-columns:1fr 1fr}.collage div:nth-child(3){display:none}
+ .dest{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr;gap:30px}form{grid-template-columns:1fr}section{padding:56px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#top">Wayfarer<b>.</b></a>
+<ul id="menu"><li><a href="#packages">Packages</a></li><li><a href="#places">Destinations</a></li><li><a href="#plan">Itinerary</a></li><li><a href="#enquiry">Enquiry</a></li></ul>
+<a class="btn" href="#enquiry">Plan my trip</a><button id="burger" aria-label="Menu">Menu</button>
+</nav></div></header>
+
+<main id="top">
+<div class="wrap hero">
+<h1>Holidays across India, planned for you.</h1>
+<p>Handpicked packages with stays, transfers and local guides included. No hidden costs.</p>
+<div class="search">
+<label>Region<select id="sr"><option value="all">Anywhere</option><option>South</option><option>North</option><option>Beaches</option><option>Hills</option></select></label>
+<label>Duration<select id="sd"><option value="0">Any length</option><option value="4">Up to 4 days</option><option value="6">Up to 6 days</option><option value="9">Up to 9 days</option></select></label>
+<label>Budget<select id="sb"><option value="0">Any budget</option><option value="15000">Under ₹15,000</option><option value="25000">Under ₹25,000</option><option value="40000">Under ₹40,000</option></select></label>
+<a class="btn" href="#packages" id="go" style="align-self:center">Search</a></div>
+<div class="collage"><div style="background:linear-gradient(160deg,#ff9a6b,#ff5a36)">Kerala backwaters</div><div style="background:linear-gradient(160deg,#35b6a7,#0d5f66)">Goa</div><div style="background:linear-gradient(160deg,#6b8cff,#2b3a8c)">Ladakh</div></div>
+</div>
+
+<section id="packages"><div class="wrap"><h2>Popular holiday packages</h2><p class="sub" id="count"></p>
+<div class="chips" id="chips"><button class="chip on" data-r="all">All</button><button class="chip" data-r="South">South</button><button class="chip" data-r="North">North</button><button class="chip" data-r="Beaches">Beaches</button><button class="chip" data-r="Hills">Hills</button></div>
+<div class="grid" id="grid"></div></div></section>
+
+<section id="places" class="soft"><div class="wrap"><h2>Trending destinations</h2><p class="sub">Where our travellers are going this season.</p>
+<div class="dest">
+<div style="background:linear-gradient(180deg,#0000 30%,#0008),linear-gradient(135deg,#ffb36b,#ff5a36)"><b>Jaipur</b><small>Forts and bazaars</small></div>
+<div style="background:linear-gradient(180deg,#0000 30%,#0008),linear-gradient(135deg,#4fd1c5,#0d5f66)"><b>Alleppey</b><small>Houseboat stays</small></div>
+<div style="background:linear-gradient(180deg,#0000 30%,#0008),linear-gradient(135deg,#8fa8ff,#2b3a8c)"><b>Manali</b><small>Snow and valleys</small></div>
+<div style="background:linear-gradient(180deg,#0000 30%,#0008),linear-gradient(135deg,#f6d365,#e17b26)"><b>Hampi</b><small>Ancient ruins</small></div>
+</div></div></section>
+
+<section id="plan"><div class="wrap two"><div><h2>Sample itinerary: Kerala in 5 days</h2><p class="sub">Tap a day to see the plan.</p><a class="btn" href="#enquiry">Customise this trip</a></div>
+<div>
+<details open><summary>Day 1 · Arrive in Kochi</summary><p>Airport pickup, Fort Kochi walk, Chinese fishing nets and a Kathakali show in the evening.</p></details>
+<details><summary>Day 2 · Munnar tea hills</summary><p>Drive through spice and tea estates, visit Mattupetty Dam and a tea museum.</p></details>
+<details><summary>Day 3 · Thekkady wildlife</summary><p>Periyar lake boat ride, spice plantation visit and an optional Ayurvedic massage.</p></details>
+<details><summary>Day 4 · Alleppey houseboat</summary><p>Board your private houseboat, enjoy Kerala meals and an overnight stay on the backwaters.</p></details>
+<details><summary>Day 5 · Departure</summary><p>Breakfast on the water, transfer to Kochi airport with trip photos shared by your guide.</p></details>
+</div></div></section>
+
+<section id="enquiry" class="soft"><div class="wrap two"><div><h2>Tell us where you want to go</h2><p class="sub">We reply within 24 hours with a free quote.</p><p>📞 +91 98480 00000<br>✉️ hello@wayfarer.example<br>📍 Benz Circle, Vijayawada</p></div>
+<form id="f"><label>Full name<input required placeholder="Your name"></label><label>Phone<input required type="tel" pattern="[0-9]{10}" placeholder="10-digit number"></label>
+<label>Destination<select><option>Kerala</option><option>Goa</option><option>Ladakh</option><option>Rajasthan</option><option>Manali</option><option>Andaman</option></select></label>
+<label>Travellers<input type="number" min="1" max="20" value="2"></label>
+<label class="full">Travel date<input type="date" required></label>
+<label class="full">Notes<textarea rows="3" placeholder="Hotel type, special requests..."></textarea></label>
+<button class="btn full" type="submit">Get my free quote</button><p id="ok" role="status"></p></form></div></section>
+</main>
+<footer><div class="wrap">© 2026 Wayfarer Holidays · Sample website for coursework</div></footer>
+
+<script>
+const P=[
+{n:'Kerala Backwaters',r:'South',d:5,p:22999,o:27999,e:'🛶',g:'#ff9a6b,#ff5a36',t:['Houseboat','Munnar','Meals']},
+{n:'Goa Beach Escape',r:'Beaches',d:4,p:14999,o:18999,e:'🏖️',g:'#35b6a7,#0d5f66',t:['Beach resort','Water sports']},
+{n:'Ladakh Adventure',r:'North',d:8,p:38999,o:44999,e:'🏔️',g:'#6b8cff,#2b3a8c',t:['Pangong lake','Guide','Permits']},
+{n:'Royal Rajasthan',r:'North',d:6,p:24999,o:29999,e:'🏰',g:'#f6a65a,#c4511f',t:['Jaipur','Udaipur','Heritage hotel']},
+{n:'Manali Snow Trip',r:'Hills',d:5,p:17999,o:21999,e:'❄️',g:'#8fa8ff,#3b4a9e',t:['Solang valley','Hotel','Transfers']},
+{n:'Andaman Islands',r:'Beaches',d:6,p:32999,o:37999,e:'🐠',g:'#4fd1c5,#13667a',t:['Scuba','Ferry','Resort']},
+{n:'Hampi and Badami',r:'South',d:3,p:9999,o:12999,e:'🛕',g:'#f6d365,#e17b26',t:['Heritage walk','Guide']},
+{n:'Ooty and Coorg',r:'Hills',d:5,p:15999,o:19499,e:'🌿',g:'#7bd389,#1f6f4a',t:['Tea estates','Homestay']}];
+const grid=document.getElementById('grid');let reg='all';
+function render(){
+ const d=+sd.value,b=+sb.value;
+ const L=P.filter(x=>(reg==='all'||x.r===reg)&&(!d||x.d<=d)&&(!b||x.p<=b));
+ count.textContent=L.length+' package'+(L.length===1?'':'s')+' found';
+ grid.innerHTML=L.length?L.map(x=>`<article class="pack"><div class="img" style="background:linear-gradient(135deg,${x.g})">${x.e}<span>${x.d} days</span></div>
+ <div class="pb"><h3>${x.n}</h3><small>${x.r} India · per person</small><ul>${x.t.map(t=>`<li>${t}</li>`).join('')}</ul>
+ <div class="row"><div><b>₹${x.p.toLocaleString('en-IN')}</b><s>₹${x.o.toLocaleString('en-IN')}</s></div><a class="btn" href="#enquiry">Enquire</a></div></div></article>`).join(''):'<p>No packages match. Try a longer duration or higher budget.</p>';
+}
+chips.onclick=e=>{const c=e.target.closest('.chip');if(!c)return;reg=c.dataset.r;sr.value=reg==='all'?'all':reg;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));render()};
+sr.onchange=()=>{reg=sr.value;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.r===reg));render()};
+sd.onchange=sb.onchange=render;go.onclick=render;render();
+const m=menu;burger.onclick=()=>m.classList.toggle('open');m.onclick=e=>{if(e.target.tagName==='A')m.classList.remove('open')};
+f.onsubmit=e=>{e.preventDefault();ok.textContent='Thanks! Our travel expert will contact you within 24 hours (demo).';f.reset()};
+</script>
+</body>
+</html>

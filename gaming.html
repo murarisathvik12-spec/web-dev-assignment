@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEONGRID Esports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030403;--panel:#0a0e0a;--line:#16261a;--g:#39ff14;--txt:#e8f5e8;--mute:#7f9a82}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Chakra Petch',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;background-image:linear-gradient(rgba(57,255,20,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,20,.045) 1px,transparent 1px);background-size:48px 48px}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(3,4,3,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:66px}
+.logo{font-weight:700;font-size:1.4rem;letter-spacing:.06em}.logo b{color:var(--g);text-shadow:0 0 14px var(--g)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.92rem}
+nav ul a{color:var(--mute);transition:.2s}nav ul a:hover{color:var(--g);text-shadow:0 0 10px var(--g)}
+.btn{display:inline-block;border:1px solid var(--g);color:var(--g);background:transparent;font:inherit;font-weight:600;padding:11px 24px;cursor:pointer;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:.25s}
+.btn:hover,.btn.fill{background:var(--g);color:#000;box-shadow:0 0 28px rgba(57,255,20,.55)}
+#burger{display:none;background:none;border:1px solid var(--line);color:var(--g);padding:8px 12px;font:inherit}
+.hero{padding:100px 0 70px;position:relative}
+.hero::after{content:"";position:absolute;right:-120px;top:20px;width:460px;height:460px;background:radial-gradient(circle,rgba(57,255,20,.28),transparent 65%);z-index:-1;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5;transform:scale(1.1)}}
+.tag{display:inline-block;border:1px solid var(--line);color:var(--g);padding:4px 14px;font-size:.82rem;margin-bottom:18px}
+.hero h1{font-size:clamp(2.8rem,9vw,7rem);line-height:.95;letter-spacing:-.02em;font-weight:700;max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--g);text-shadow:0 0 30px rgba(57,255,20,.6)}
+.hero p{color:var(--mute);max-width:480px;margin:22px 0 28px}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.count{display:flex;gap:14px;margin-top:50px;flex-wrap:wrap}
+.count div{background:var(--panel);border:1px solid var(--line);padding:16px 22px;min-width:96px;text-align:center}
+.count b{display:block;font-size:2rem;color:var(--g);text-shadow:0 0 14px rgba(57,255,20,.6)}.count small{color:var(--mute)}
+.cap{color:var(--mute);margin-top:12px;font-size:.9rem}
+section{padding:80px 0}
+h2{font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:34px;letter-spacing:.02em}
+h2::before{content:"";display:inline-block;width:10px;height:.9em;background:var(--g);box-shadow:0 0 16px var(--g);margin-right:14px;vertical-align:-.1em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);padding:24px;transition:.3s;position:relative}
+.card:hover{border-color:var(--g);box-shadow:0 0 30px -8px rgba(57,255,20,.5);transform:translateY(-5px)}
+.card .ic{font-size:2rem}.card h3{margin:10px 0 4px}.card p{color:var(--mute);font-size:.9rem}.card small{color:var(--g);font-weight:600}
+.scroll{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table{width:100%;border-collapse:collapse;min-width:620px}
+th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:.94rem}
+th{color:var(--g);font-weight:600;font-size:.85rem;background:#060a06}
+tr:hover td{background:#0d140d}
+.rk{font-weight:700;color:var(--mute)}tr:nth-child(-n+3) .rk{color:var(--g);text-shadow:0 0 10px var(--g)}
+.pill{border:1px solid var(--g);color:var(--g);padding:2px 10px;font-size:.78rem}
+.pill.live{background:var(--g);color:#000;animation:pulse 1.6s infinite}
+.bar{height:6px;background:#122012;min-width:90px}.bar i{display:block;height:100%;background:var(--g);box-shadow:0 0 10px var(--g)}
+.team{display:flex;gap:16px;align-items:center}
+.logo2{width:54px;height:54px;border:1px solid var(--g);display:grid;place-items:center;font-weight:700;color:var(--g);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.news a{display:block;border-left:2px solid var(--line);padding:6px 0 6px 18px;margin-bottom:14px;transition:.2s}
+.news a:hover{border-color:var(--g);padding-left:24px}.news small{color:var(--g)}.news b{display:block}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px}
+label{display:grid;gap:6px;font-size:.85rem;color:var(--mute)}.full{grid-column:1/-1}
+input,select{font:inherit;color:var(--txt);background:var(--panel);border:1px solid var(--line);padding:13px;transition:.2s}
+input:focus,select:focus{outline:none;border-color:var(--g);box-shadow:0 0 14px rgba(57,255,20,.3)}
+#ok{grid-column:1/-1;color:var(--g)}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:.88rem}
+@media(max-width:820px){
+ #burger{display:block}
+ nav ul{position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:#030403;border-bottom:1px solid var(--line);display:none}
+ nav ul.open{display:flex}nav ul a{display:block;padding:15px 4%}
+ nav>.btn{display:none}form{grid-template-columns:1fr}section{padding:56px 0}.hero{padding:64px 0 40px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#top">NEON<b>GRID</b></a>
+<ul id="menu"><li><a href="#games">Games</a></li><li><a href="#events">Tournaments</a></li><li><a href="#board">Leaderboard</a></li><li><a href="#teams">Teams</a></li><li><a href="#news">News</a></li></ul>
+<a class="btn" href="#join">Register</a><button id="burger" aria-label="Menu">Menu</button>
+</nav></div></header>
+
+<main id="top">
+<div class="wrap hero">
+<span class="tag">Season 4 · Prize pool ₹5,00,000</span>
+<h1>Play. Rank. <em>Dominate.</em></h1>
+<p>India’s student esports community. Join weekly tournaments, climb the leaderboard and get scouted by top teams.</p>
+<div class="row"><a class="btn fill" href="#join">Join a tournament</a><a class="btn" href="#board">View rankings</a></div>
+<div class="count" id="cd"><div><b id="d">00</b><small>days</small></div><div><b id="h">00</b><small>hours</small></div><div><b id="m">00</b><small>mins</small></div><div><b id="s">00</b><small>secs</small></div></div>
+<p class="cap">Until the Grand Finals · Saturday 12 December 2026</p>
+</div>
+
+<section id="games"><div class="wrap"><h2>Featured games</h2><div class="grid">
+<div class="card"><div class="ic">🔫</div><h3>Valorant</h3><p>5v5 tactical shooter. Weekly 8-team brackets.</p><small>3,200 players</small></div>
+<div class="card"><div class="ic">🪖</div><h3>BGMI</h3><p>Squad battle royale with a mobile-first league.</p><small>5,400 players</small></div>
+<div class="card"><div class="ic">⚽</div><h3>EA FC 26</h3><p>1v1 knockout cups every Sunday.</p><small>1,900 players</small></div>
+<div class="card"><div class="ic">🏎️</div><h3>Asphalt Legends</h3><p>Time trials and head-to-head racing.</p><small>980 players</small></div>
+</div></div></section>
+
+<section id="events"><div class="wrap"><h2>Tournament schedule</h2>
+<div class="scroll"><table><thead><tr><th>Date</th><th>Tournament</th><th>Game</th><th>Prize</th><th>Status</th></tr></thead><tbody>
+<tr><td>05 Nov</td><td>Grid Open #12</td><td>Valorant</td><td>₹50,000</td><td><span class="pill live">Live</span></td></tr>
+<tr><td>14 Nov</td><td>Squad Showdown</td><td>BGMI</td><td>₹75,000</td><td><span class="pill">Open</span></td></tr>
+<tr><td>21 Nov</td><td>Campus Cup</td><td>EA FC 26</td><td>₹25,000</td><td><span class="pill">Open</span></td></tr>
+<tr><td>28 Nov</td><td>Turbo Rush</td><td>Asphalt Legends</td><td>₹15,000</td><td><span class="pill">Soon</span></td></tr>
+<tr><td>12 Dec</td><td>Grand Finals</td><td>Valorant · BGMI</td><td>₹2,00,000</td><td><span class="pill">Soon</span></td></tr>
+</tbody></table></div></div></section>
+
+<section id="board"><div class="wrap"><h2>Leaderboard</h2>
+<div class="scroll"><table><thead><tr><th>Rank</th><th>Player</th><th>Team</th><th>Wins</th><th>Win rate</th><th>Points</th></tr></thead><tbody id="lb"></tbody></table></div></div></section>
+
+<section id="teams"><div class="wrap"><h2>Top teams</h2><div class="grid">
+<div class="card team"><div class="logo2">VX</div><div><h3>Viper X</h3><small>Valorant · 24 wins</small></div></div>
+<div class="card team"><div class="logo2">NS</div><div><h3>Night Strike</h3><small>BGMI · 21 wins</small></div></div>
+<div class="card team"><div class="logo2">RG</div><div><h3>Red Giants</h3><small>Valorant · 19 wins</small></div></div>
+<div class="card team"><div class="logo2">ZP</div><div><h3>Zero Ping</h3><small>EA FC 26 · 17 wins</small></div></div>
+</div></div></section>
+
+<section id="news"><div class="wrap"><h2>Latest news</h2><div class="news">
+<a href="#news"><small>30 Oct</small><b>Viper X reach the Grid Open semi-finals</b>Three straight wins put them on top of their group.</a>
+<a href="#news"><small>27 Oct</small><b>New map pool announced for Season 4</b>Two fresh maps arrive for the Grand Finals.</a>
+<a href="#news"><small>24 Oct</small><b>Registrations open for Campus Cup</b>Free entry for college teams until 10 November.</a>
+</div></div></section>
+
+<section id="join"><div class="wrap"><h2>Register your team</h2>
+<form id="f"><label>Gamer tag<input required placeholder="e.g. Shadow07"></label><label>Email<input required type="email" placeholder="you@email.com"></label>
+<label>Game<select><option>Valorant</option><option>BGMI</option><option>EA FC 26</option><option>Asphalt Legends</option></select></label>
+<label>Team name<input placeholder="Solo? Leave blank"></label>
+<button class="btn fill full" type="submit">Enter tournament</button><p id="ok" role="status"></p></form></div></section>
+</main>
+<footer><div class="wrap">© 2026 NEONGRID Esports · Sample website for coursework</div></footer>
+
+<script>
+const PL=[['Shadow07','Viper X',48,81,9640],['KiraFlash','Night Strike',44,78,9120],['Blaze','Red Giants',41,74,8815],['NovaX','Zero Ping',39,72,8420],['Ghost','Viper X',36,70,7990],['Rogue','Night Strike',33,66,7455],['Zen','Red Giants',30,63,7010]];
+lb.innerHTML=PL.map((p,i)=>`<tr><td class="rk">#${i+1}</td><td>${p[0]}</td><td>${p[1]}</td><td>${p[2]}</td><td><div class="bar"><i style="width:${p[3]}%"></i></div>${p[3]}%</td><td>${p[4].toLocaleString('en-IN')}</td></tr>`).join('');
+const end=new Date('2026-12-12T18:00:00+05:30');
+function tick(){const t=Math.max(0,end-new Date()),z=n=>String(n).padStart(2,'0');
+ d.textContent=z(Math.floor(t/864e5));h.textContent=z(Math.floor(t%864e5/36e5));m.textContent=z(Math.floor(t%36e5/6e4));s.textContent=z(Math.floor(t%6e4/1e3))}
+tick();setInterval(tick,1000);
+burger.onclick=()=>menu.classList.toggle('open');menu.onclick=e=>{if(e.target.tagName==='A')menu.classList.remove('open')};
+f.onsubmit=e=>{e.preventDefault();ok.textContent='You are in! Check your email for bracket details (demo).';f.reset()};
+</script>
+</body>
+</html>
